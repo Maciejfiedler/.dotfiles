@@ -1,2 +1,2 @@
 execute pathogen#infect()
-:colorscheme badwolf
+:colorscheme spaceduck
