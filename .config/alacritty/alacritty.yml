@@ -23,19 +23,19 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#10100E'
-    foreground: '#C6C6C4'
+    background: '#1f1f1d'
+    foreground: '#e0e0e0'
 
   # Normal colors
   normal:
     black:   '#10100E'
-    red:     '#C40233'
-    green:   '#009F6B'
-    yellow:  '#FFD700'
-    blue:    '#0087BD'
-    magenta: '#9A4EAE'
-    cyan:    '#20B2AA'
-    white:   '#C6C6C4'
+    red:     '#eb3434'
+    green:   '#34eb40'
+    yellow:  '#e5eb34'
+    blue:    '#1a6fd9'
+    magenta: '#eb2d9b'
+    cyan:    '#21ebbc'
+    white:   '#e8e8e8'
 
   # Bright colors
   bright:
