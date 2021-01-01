@@ -82,8 +82,10 @@ super + {o,i}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+#push window to ther monitor
+super + v
+	bspc node -m next --follow
 #
 # preselect
 #
@@ -119,3 +121,7 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Change Monitor
+super + x 
+	bspc monitor next -f
