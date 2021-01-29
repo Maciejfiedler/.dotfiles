@@ -268,7 +268,11 @@ main = do
     xmonad $ docks defaults{
         logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
-            ppSep = "   "
+            ppSep = " | ",
+            ppCurrent = xmobarColor "#ffffff" "" . wrap "[" "]",
+            ppHidden = xmobarColor "#bcbcbc" "",
+            ppHiddenNoWindows = xmobarColor "#4c4c4c" "",
+            ppTitle = xmobarColor "#bebebe" "" . shorten 20
         },
         manageHook = manageDocks <+> myManageHook
     }
