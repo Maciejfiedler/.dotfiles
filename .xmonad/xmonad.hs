@@ -35,7 +35,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -270,10 +270,12 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "xmobar /home/maciej/.config/xmobar/xmobar.config"
+    xmproc0 <- spawnPipe "xmobar /home/maciej/.config/xmobar/xmobar.config"
+    xmproc1 <- spawnPipe "compton --config /home/maciej/.config/compton/compton.conf"
+
     xmonad $ docks defaults{
         logHook = dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc,
+            ppOutput = hPutStrLn xmproc0,
             ppSep = " | ",
             ppCurrent = xmobarColor "#ffffff" "" . wrap "[" "]",
             ppHidden = xmobarColor "#bcbcbc" "",
