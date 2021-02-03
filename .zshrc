@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# AUTOSTART
+colorscript --random
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/maciej/.oh-my-zsh"
 
@@ -9,7 +12,6 @@ export ZSH="/home/maciej/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -74,7 +76,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export PF_INFO="ascii os host kernel uptime pkgs memory"
+export PF_ASCII="linux"
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -98,3 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
+alias updateconfigs='sudo emerge --update --changed-use --deep --quiet @world'
+alias minecraft='~/Apps/minecraft-launcher/minecraft-launcher'
+alias redit='~/Apps/redyt/redyt'
