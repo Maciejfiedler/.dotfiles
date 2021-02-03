@@ -57,8 +57,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#427591"
+myNormalBorderColor  = "#427591"
+myFocusedBorderColor = "#dddddd"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -270,10 +270,10 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc0 <- spawnPipe "xmobar /home/maciej/.config/xmobar/xmobar.config"
-    xmproc1 <- spawnPipe "compton --config /home/maciej/.config/compton/compton.conf"
+   xmproc0 <- spawnPipe "xmobar /home/maciej/.config/xmobar/xmobar.config"
+   xmproc1 <- spawnPipe "picom --config /home/maciej/.config/picom/picom.conf"
 
-    xmonad $ docks defaults{
+   xmonad $ docks defaults{
         logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc0,
             ppSep = " | ",
