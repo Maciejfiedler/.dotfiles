@@ -69,7 +69,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. mod1Mask, xK_t), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((modm,               xK_Return     ), spawn "dmenu_run")
+    , ((modm,               xK_Return     ), spawn "rofi -show run")
 
     -- close focused window
     , ((modm,               xK_w     ), kill)
