@@ -19,31 +19,30 @@ font:
     family: DejaVu Sans Mono Nerd Font
     # Style can be specified to pick a specific face.
     # style: Italic
-# Colors (Blood Moon)
+
+## Colors (Molokai Dark)
 colors:
   # Default colors
   primary:
-    background: '#1f1f1d'
-    foreground: '#e0e0e0'
-
+    background: '#1a1b26'
+    foreground: '#F8F8F2'
   # Normal colors
   normal:
-    black:   '#10100E'
-    red:     '#eb3434'
-    green:   '#34eb40'
-    yellow:  '#e5eb34'
-    blue:    '#1a6fd9'
-    magenta: '#eb2d9b'
-    cyan:    '#21ebbc'
-    white:   '#e8e8e8'
-
+    black:   '#333333'
+    red:     '#C4265E'
+    green:   '#48BB78'
+    yellow:  '#F6E05E'
+    blue:    '#6A7EC8'
+    magenta: '#8C6BC8'
+    cyan:    '#56ADBC'
+    white:   '#E3E3DD'
   # Bright colors
   bright:
-    black:   '#696969'
-    red:     '#FF2400'
-    green:   '#03C03C'
-    yellow:  '#FDFF00'
-    blue:    '#007FFF'
-    magenta: '#FF1493'
-    cyan:    '#00CCCC'
-    white:   '#FFFAFA'
+    black:   '#666666'
+    red:     '#F92672'
+    green:   '#51d688'
+    yellow:  '#FAF089'
+    blue:    '#819AFF'
+    magenta: '#AE81FF'
+    cyan:    '#66D9EF'
+    white:   '#F8F8F2'# Colors (Molokai Dark)

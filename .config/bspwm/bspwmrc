@@ -4,17 +4,17 @@
 ### AUTOSTART ###
 sxhkd &
 nitrogen --restore & 
-polybar example &
+./.config/polybar/launch.sh &
 
 ### MONITORS ###
-bspc monitor -d I II III IV V VI VII VIII IX X
-
+bspc monitor DP-0 -d I II III IV V VI VII VIII IX X
+bspc monitor HDMI-0 -d I II III IV V VI VII VIII IX X
 
 ### CONFIGURATION ###
 bspc config border_width 2
 bspc config window_gap 15
 
-bspc config normal_border_color "#093049"
-bspc config active_border_color "#1076ba"
-bspc config focused_border_color "#1076ba"
+bspc config normal_border_color "#1b5b34"
+bspc config active_border_color "#28824a"
+bspc config focused_border_color "#38b769"
 
