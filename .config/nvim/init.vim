@@ -6,7 +6,7 @@ set termguicolors
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
-let NERDTreeWinSize = 25
+let NERDTreeWinSize = 22
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
