@@ -71,7 +71,7 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
+	
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -104,5 +104,5 @@ export EDITOR="nvim"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
 alias minecraft='~/Apps/minecraft-launcher/minecraft-launcher'
 alias redit='~/Apps/redyt/redyt'
-alias upgento='sudo emerge --verbose --update --deep --changed-use @world'
+alias upgento='doas emerge --verbose --update --deep --changed-use @world'
 alias doit='doas'

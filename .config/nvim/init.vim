@@ -27,4 +27,5 @@ noremap <silent> <C-C> :noh<CR>
 noremap <silent> <C-T><C-N> :tabnext<CR>
 noremap <silent> <C-C><C-N> :tabnew<CR>
 tnoremap <Esc> <C-\><C-n><CR>
+set pastetoggle=<F2>
 

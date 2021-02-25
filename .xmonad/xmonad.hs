@@ -17,6 +17,9 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Layout.Spacing
 import XMonad.Layout.Named
 import XMonad.Util.Cursor
+import XMonad.Layout.Spiral
+import XMonad.Layout.Grid
+import XMonad.Hooks.ManageHelpers
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -69,14 +72,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. mod1Mask, xK_t), spawn $ XMonad.terminal conf)
 
-    -- launch dmenu
+    -- launch browser
+    , ((modm .|. mod1Mask, xK_b), spawn "librewolf")
+
+    -- launch lutris
+    , ((modm .|. mod1Mask, xK_l), spawn "lutris")
+
+    -- launch rofi 
     , ((modm,               xK_Return     ), spawn "rofi -show drun")
 
     -- close focused window
     , ((modm,               xK_w     ), kill)
-    
-    -- floating to tiled
-    , ((modm .|. mod1Mask,  xK_m),  withFocused $ windows . W.sink)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -127,7 +133,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+     --    , ((modm              , xK_b     ), sendMessage ToggleStruts) 
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -185,19 +191,15 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = named "" $ spacing 10 $ avoidStruts (tiled ||| Mirror tiled ||| Full)
-  where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
 
-     -- The default number of windows in the master pane
-     nmaster = 1
-
-     -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
-
-     -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
+myLayout = spacing 10 $ avoidStruts $
+            layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| layoutFull
+    where
+      layoutTall = Tall 1 (3/100) (1/2)
+      layoutSpiral = spiral (6/7)
+      layoutGrid = Grid
+      layoutMirror = Mirror (Tall 1 (3/100) (3/5))
+      layoutFull = Full
 
 ------------------------------------------------------------------------
 -- Window rules:

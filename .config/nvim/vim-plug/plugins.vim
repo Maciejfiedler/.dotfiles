@@ -17,10 +17,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ghifarit53/tokyonight-vim'
     Plug 'itchyny/lightline.vim'
     Plug 'mhinz/vim-startify'
-    Plug 'shougo/deol.nvim'
     Plug 'neoclide/coc.nvim'
     Plug 'lilydjwg/colorizer'
     Plug 'justinmk/vim-sneak'
-    Plug 'junegunn/fzf'
     Plug 'liuchengxu/vim-which-key'
+    Plug 'w0rp/ale'
+    Plug 'junegunn/fzf.vim'
+    Plug 'shougo/deol.nvim'
+
     call plug#end()
