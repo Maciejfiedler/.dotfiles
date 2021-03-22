@@ -20,6 +20,7 @@ import XMonad.Util.Cursor
 import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
 import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.Maximize
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -57,7 +58,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["1","2","3","4","5","6","7","chill","other"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -73,13 +74,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. mod1Mask, xK_t), spawn $ XMonad.terminal conf)
 
     -- launch browser
-    , ((modm .|. mod1Mask, xK_b), spawn "librewolf")
+    , ((modm .|. mod1Mask, xK_b), spawn "brave-bin")
 
     -- launch lutris
     , ((modm .|. mod1Mask, xK_l), spawn "lutris")
 
     -- launch rofi 
     , ((modm,               xK_Return     ), spawn "rofi -show drun")
+
+    -- restore maximize when window bugs
+    , ((modm,               xK_r     ), withFocused (sendMessage . maximizeRestore))
 
     -- close focused window
     , ((modm,               xK_w     ), kill)
@@ -192,11 +196,10 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 
-myLayout = spacing 10 $ avoidStruts $
-            layoutTall ||| layoutSpiral ||| layoutGrid ||| layoutMirror ||| layoutFull
+myLayout = maximize $ spacingWithEdge 5 $ avoidStruts $
+            layoutTall ||| layoutGrid ||| layoutMirror ||| layoutFull
     where
       layoutTall = Tall 1 (3/100) (1/2)
-      layoutSpiral = spiral (6/7)
       layoutGrid = Grid
       layoutMirror = Mirror (Tall 1 (3/100) (3/5))
       layoutFull = Full
@@ -275,6 +278,7 @@ myStartupHook = return ()
 main = do
    xmproc0 <- spawnPipe "xmobar /home/maciej/.config/xmobar/xmobar.config"
    xmproc1 <- spawnPipe "picom --config /home/maciej/.config/picom/picom.conf"
+   xmproc2 <- spawnPipe "doit rc-service start ntp-client"
 
    xmonad $ docks defaults{
         logHook = dynamicLogWithPP $ xmobarPP {
@@ -283,7 +287,7 @@ main = do
             ppCurrent = xmobarColor "#ffffff" "" . wrap "[" "]",
             ppHidden = xmobarColor "#bcbcbc" "",
             ppHiddenNoWindows = xmobarColor "#4c4c4c" "",
-            ppTitle = xmobarColor "#bebebe" "" . shorten 20
+            ppTitle = xmobarColor "#bebebe" "" . shorten 40
         },
         manageHook = manageDocks <+> myManageHook,
         startupHook = setDefaultCursor xC_X_cursor
