@@ -7,7 +7,7 @@
 -- Normally, you'd only override those defaults you care about.
 --
 
-import XMonad
+import XMonad hiding ( (|||) )
 import Data.Monoid
 import System.Exit
 
@@ -18,6 +18,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Named
 import XMonad.Util.Cursor
 import XMonad.Layout.Spiral
+import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Grid
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Maximize
@@ -73,6 +74,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. mod1Mask, xK_t), spawn $ XMonad.terminal conf)
 
+    -- jump directly to the Full layout
+   , ((mod1Mask, xK_f), sendMessage $ JumpToLayout "Full") 
     -- launch browser
     , ((modm .|. mod1Mask, xK_b), spawn "brave-bin")
 
@@ -80,7 +83,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. mod1Mask, xK_l), spawn "lutris")
 
     -- launch rofi 
-    , ((modm,               xK_Return     ), spawn "rofi -show drun")
+    , ((modm,               xK_Return     ), spawn "rofi -show run")
 
     -- restore maximize when window bugs
     , ((modm,               xK_r     ), withFocused (sendMessage . maximizeRestore))
@@ -196,8 +199,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- which denotes layout choice.
 --
 
-myLayout = maximize $ spacingWithEdge 5 $ avoidStruts $
-            layoutTall ||| layoutGrid ||| layoutMirror ||| layoutFull
+myLayout = (maximize $ spacingWithEdge 5 $ avoidStruts $
+            layoutTall ||| layoutGrid ||| layoutMirror) ||| layoutFull
     where
       layoutTall = Tall 1 (3/100) (1/2)
       layoutGrid = Grid
