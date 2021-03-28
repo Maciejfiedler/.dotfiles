@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# AUTOSTART
-pfetch
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/maciej/.oh-my-zsh"
 
@@ -77,7 +74,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PF_INFO="ascii os host kernel uptime pkgs memory"
-export PF_ASCII="linux"
+export PF_ASCII="artix"
 export EDITOR="nvim"
 
 # You may need to manually set your language environment
@@ -106,3 +103,13 @@ alias minecraft='~/Apps/minecraft-launcher/minecraft-launcher'
 alias redit='~/Apps/redyt/redyt'
 alias upgento='doas emerge --verbose --update --deep --changed-use @world'
 alias doit='doas'
+alias virt='/home/maciej/Apps/virt-manager-3.2.0/virt-manager'
+alias e='nvim'
+alias mountusb='doit mount /dev/sdd1 /media/usb'
+alias r='ranger'
+alias discord='cd /home/maciej/Apps/discord/ && ./Discord'
+
+# AUTOSTART
+clear
+pfetch
+eval "$(starship init zsh)"
